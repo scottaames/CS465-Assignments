@@ -8,12 +8,12 @@ class EchoThread implements Runnable {
 
 	  /*
 	   * Constructor method
-	   * Desc: 
-	   *   
-	   * Input: 
+	   * Desc:
+	   *
+	   * Input:
 	   *   clientSocket: The socket that the client is using on their computer that
-	   *     we want to use to talk to them 
-	   *     
+	   *     we want to use to talk to them
+	   *
 	   */
     public EchoThread(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -21,16 +21,16 @@ class EchoThread implements Runnable {
 
     public void run() {
         try {
-					
-						// If this method is running, the connection has succeeded. 
-						// Tell the user 
-						system.out.println( "Sucessfully connected" ); 
-						
+
+			// If this method is running, the connection has succeeded.
+			// Tell the user
+			system.out.println( "Sucessfully connected" );
+
             InputStream fromClient = clientSocket.getInputStream();
             OutputStream toClient = clientSocket.getOutputStream();
-						char charFromClient; 
-						String 
-						
+						char charFromClient;
+						String
+
             long time = System.currentTimeMillis();
             output.write(("HTTP/1.1 200 OK\n\nWorkerRunnable: - " +
 time +
@@ -43,24 +43,24 @@ time +
             e.printStackTrace();
         }
     }
-		
+
 		/*
-		* Desc: 
-				Method that checks if the character stream includes non-letter 
+		* Desc:
+				Method that checks if the character stream includes non-letter
 				characters
-		*/ 
+		*/
 		public boolean checkCharacter() {
-			
-			return true; 
+
+			return true;
 		}
-		
+
 		/*
-		* Desc: 
-				Method that checks if the character string spells 'quit' 
-		*/ 
+		* Desc:
+				Method that checks if the character string spells 'quit'
+		*/
 		public boolean checkQuit( String charFromClient) {
-			
+
 		}
   }
-	
-// 
+
+//
