@@ -1,6 +1,11 @@
 import java.net.*;
 import java.lang.Thread;
 
+/*
+* Desc:
+    Class that acts as the server. It creates threads that will each handle
+    individual clients.
+ */
 public class EchoServer {
     public static void main (String[] args) {
 
@@ -18,7 +23,7 @@ public class EchoServer {
                 // Open a new thread, sending the client's socket to the new thread
                 Thread clientThread = new Thread(new EchoThread(client));
 
-                // Begin execution of the thread
+                // Begin execution of the thread that will handle the server's function
                 clientThread.start();
             }
         }
