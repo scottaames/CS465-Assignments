@@ -23,7 +23,7 @@ class EchoThread implements Runnable {
         try {
             // If this method is running, the connection has succeeded.
             // Tell the user
-            System.out.println( "Successfully connected" );
+            System.out.println("Successfully connected");
 
             InputStream fromClient = clientSocket.getInputStream();
             OutputStream toClient = clientSocket.getOutputStream();
@@ -43,9 +43,5 @@ class EchoThread implements Runnable {
         }
     }
 
-    /*
-    * Desc:
-            Method that checks if the character stream includes non-letter
-            characters
-    */
+    
 }

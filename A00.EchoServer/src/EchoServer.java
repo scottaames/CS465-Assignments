@@ -9,6 +9,8 @@ public class EchoServer {
             // Open a socket on the server side
             ServerSocket server = new ServerSocket(8080);
 
+            System.out.println( "running" );
+
             // Be able to continuously accept new clients as they come and go
             while (true) {
 
