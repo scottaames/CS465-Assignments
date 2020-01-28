@@ -139,8 +139,11 @@ class EchoThread implements Runnable {
                 // If the client did not type a letter, nothing will be returned
             }
 
-            // If the session has ented by entering 'quit', display this message to the client
+            // If the session has ended by entering 'quit', display this message to the client
             toClient.write("\nSession ended: exit word 'quit' was read from client.".getBytes());
+
+            // Display a message to the server, saying the session has ended
+            System.out.println( "Session has ended" );
 
             // Close the connection to and from the client
             toClient.close();
