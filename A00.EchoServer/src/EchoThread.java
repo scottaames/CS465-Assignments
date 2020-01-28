@@ -28,27 +28,36 @@ class EchoThread implements Runnable {
             InputStream fromClient = clientSocket.getInputStream();
             OutputStream toClient = clientSocket.getOutputStream();
             char charFromClient;
-            char[] quitArray = new char[4];
+            String quitString = "";
 
-            toClient.write(("HTTP/1.1 200 OK\n\nEchoServer Connected:\n\n").getBytes());
+            toClient.write(("EchoServer Connected:\n\n").getBytes());
 
             while (isRunning) {
                 charFromClient = (char) fromClient.read();
                 if (Character.isLetter(charFromClient)) {
-                     switch (quitArray.length) {
+                     switch (quitString.length()) {
                          case 0:
                              if (charFromClient == 'q') {
-                                 quitArray[0] = charFromClient;
+                                 quitString += 'q';
+                             }
+                             else {
+                                 quitString = "";
                              }
                              break;
                          case 1:
                              if (charFromClient == 'u') {
-                                 quitArray[1] = charFromClient;
+                                 quitString += 'u';
+                             }
+                             else {
+                                 quitString = "";
                              }
                              break;
                          case 2:
                              if (charFromClient == 'i') {
-                                 quitArray[2] = charFromClient;
+                                 quitString += 'i';
+                             }
+                             else {
+                                 quitString = "";
                              }
                              break;
                          case 3:
@@ -57,12 +66,15 @@ class EchoThread implements Runnable {
                              }
                              break;
                      }
+                     fromClient.nullInputStream();
                      toClient.write((byte) charFromClient);
+
                 }
             }
+
+            toClient.write("\nSession ended: exit word 'quit' was read from client.".getBytes());
             toClient.close();
             fromClient.close();
-            System.out.println("Session ended: exit word 'quit' was read from client.");
         } catch (IOException e) {
             //report exception somewhere.
             e.printStackTrace();
